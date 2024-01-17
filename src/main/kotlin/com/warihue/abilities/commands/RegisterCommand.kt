@@ -2,7 +2,9 @@ package com.warihue.abilities.commands
 
 import com.warihue.abilities.Main
 import com.warihue.abilities.core.Ability
+import com.warihue.abilities.core.Ability.NONE
 import com.warihue.abilities.core.UserPlayer
+import com.warihue.abilities.core.item.OpenGUI.openAnvilTable
 import com.warihue.abilities.saves.deleteFile
 import com.warihue.abilities.saves.makeFile
 import io.github.monun.kommand.kommand
@@ -37,8 +39,9 @@ object RegisterCommand {
                 //region /wap disuse
                 then("disuse"){
                     executes {
-                        changeAbility(sender as Player, File(Main.datafolder, "/players/${player.uniqueId}.yml"), Ability.NONE)
+                        changeAbility(sender as Player, File(Main.datafolder, "/players/${player.uniqueId}.yml"), NONE)
                         player.sendActionBar(text("§l §c 능력 사라짐"))
+                        openAnvilTable(player)
                     }
                 }
                 //endregion

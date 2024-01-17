@@ -7,6 +7,7 @@ import org.bukkit.Material
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
+import io.github.monun.tap.loader.LibraryLoader
 
 class Main: JavaPlugin() {
 
@@ -14,6 +15,7 @@ class Main: JavaPlugin() {
         var playerManager : PlayerManager? = null
         var instance : Main? = null
         var datafolder: File? = null
+
     }
 
 

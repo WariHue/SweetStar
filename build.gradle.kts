@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.paperweight)
     alias(libs.plugins.shadow)
+
 }
 
 java {
@@ -26,10 +27,9 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation(kotlin("reflect"))
     paperweight.paperDevBundle(libs.versions.paper)
-
     implementation("io.github.monun:kommand-api:3.1.7")
     implementation("io.github.monun:tap-api:4.9.8")
-//    implementation("io.github.monun:invfx-api:latest.release")
+    implementation("io.github.monun:invfx-api:3.3.2")
 //    implementation("io.github.monun:heartbeat-coroutines:latest.release")
 }
 
@@ -110,29 +110,29 @@ tasks {
             }
         }
     }
-//
-//    fun registerJar(
-//        classifier: String,
-//        source: Any
-//    ) = register<Copy>("test${classifier.capitalized()}Jar") {
-//        from(source)
-//
-//        val prefix = project.name
-//        val plugins = rootProject.file(".server/plugins-$classifier")
-//        val update = File(plugins, "update")
-//        val regex = Regex("($prefix).*(.jar)")
-//
-//        from(source)
-//        into(if (plugins.listFiles { _, it -> it.matches(regex) }?.isNotEmpty() == true) update else plugins)
-//
-//        doLast {
-//            update.mkdirs()
-//            File(update, "RELOAD").delete()
-//        }
-//    }
-//
-//    registerJar("dev", jar)
-//    registerJar("reobf", reobfJar)
+
+    fun registerJar(
+        classifier: String,
+        source: Any
+    ) = register<Copy>("test${classifier.capitalized()}Jar") {
+        from(source)
+
+        val prefix = project.name
+        val plugins = rootProject.file(".server/plugins-$classifier")
+        val update = File(plugins, "update")
+        val regex = Regex("($prefix).*(.jar)")
+
+        from(source)
+        into(if (plugins.listFiles { _, it -> it.matches(regex) }?.isNotEmpty() == true) update else plugins)
+
+        doLast {
+            update.mkdirs()
+            File(update, "RELOAD").delete()
+        }
+    }
+
+    registerJar("dev", jar)
+    registerJar("reobf", reobfJar)
 }
 
 idea {
