@@ -4,7 +4,6 @@ import com.warihue.abilities.core.Ability
 import io.github.monun.tap.config.Config
 import io.github.monun.tap.config.ConfigSupport
 import io.github.monun.tap.config.Name
-import org.bukkit.enchantments.Enchantment
 import java.io.File
 
 @Name("player")
