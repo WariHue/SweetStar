@@ -1,7 +1,7 @@
-package com.warihue.abilities.core
+package com.warihue.sweetstar.core
 
-import com.warihue.abilities.Main
-import com.warihue.abilities.saves.makeFile
+import com.warihue.sweetstar.Main
+import com.warihue.sweetstar.saves.makeFile
 import org.bukkit.entity.Player
 import java.io.File
 
@@ -11,8 +11,9 @@ class PlayerManager {
     }
     /** 플레이어 데이터 추가 함수 */
     fun addPlayer(player: Player){
-        val newUserPlayer = UserPlayer(player.uniqueId, player.name, makeFile(File(Main.datafolder, "/players/${player.uniqueId}.yml"), Ability.NONE).ability)
+        val newUserPlayer = UserPlayer(player.uniqueId, player.name, makeFile(File(Main.datafolder, "/players/${player.uniqueId}.yml"), Team.NONE).team)
         onlinePlayerData[player] = newUserPlayer
+        player.sendMessage("Your team is " + getPlayerData(player)?.team.toString())
     }
 
     /** 플레이어 데이터 삭제 함수 */

@@ -1,16 +1,14 @@
-package com.warihue.abilities.events
+package com.warihue.sweetstar.events
 
-import com.warihue.abilities.Main
-import com.warihue.abilities.core.Ability
+
 import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerRiptideEvent
-import com.warihue.abilities.core.LaunchTrident.shotTrident
-import com.warihue.abilities.core.item.Enhancement.checkEnhanceLevel
+import com.warihue.sweetstar.core.LaunchTrident.shotTrident
+import com.warihue.sweetstar.core.item.Enhancement.checkEnhanceLevel
 import net.kyori.adventure.text.Component.text
 import org.bukkit.Bukkit
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
-import org.bukkit.entity.Trident
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.EntityDamageEvent
@@ -62,7 +60,6 @@ object RiptideEvent: Listener {
                 text(10) -> e.damage *= 2.0
                 else -> e.damage *= 1.0
             }
-            Bukkit.broadcast(text(e.damage))
         }
     }
 }

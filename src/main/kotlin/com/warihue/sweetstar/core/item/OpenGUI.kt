@@ -1,10 +1,10 @@
-package com.warihue.abilities.core.item
+package com.warihue.sweetstar.core.item
 
 
-import com.warihue.abilities.core.item.Enhancement.checkEnhanceItem
-import com.warihue.abilities.core.item.Enhancement.checkEnhanceLevel
-import com.warihue.abilities.core.item.Enhancement.enhance
-import com.warihue.abilities.core.item.Enhancement.sliceLore
+import com.warihue.sweetstar.core.item.Enhancement.checkEnhanceItem
+import com.warihue.sweetstar.core.item.Enhancement.checkEnhanceLevel
+import com.warihue.sweetstar.core.item.Enhancement.enhance
+import com.warihue.sweetstar.core.item.Enhancement.sliceLore
 import io.github.monun.invfx.InvFX.frame
 import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.text.format.NamedTextColor
@@ -36,9 +36,9 @@ object OpenGUI {
                 if (force != 10 && checkEnhanceItem(clickEvent.currentItem!!.type)) {
                     slot(4, 0) {
                         this.item = clickEvent.currentItem
-                        item!!.itemMeta = enhance(item!!.itemMeta, player, clickEvent.currentItem!!.type, true)
+                        item!!.itemMeta = enhance(item!!.itemMeta, player, clickEvent.currentItem!!.type, true, item!!, clickEvent.currentItem!!)
                         onClick { clickEvents ->
-                            clickEvents.currentItem?.itemMeta = enhance(clickEvents.currentItem!!.itemMeta, player, clickEvent.currentItem!!.type, false)
+                            clickEvents.currentItem?.itemMeta = enhance(clickEvents.currentItem!!.itemMeta, player, clickEvent.currentItem!!.type, false, item!!, clickEvent.currentItem!!)
                             clickEvent.currentItem!!.itemMeta = sliceLore(clickEvents.currentItem!!.itemMeta)
                         }
                     }

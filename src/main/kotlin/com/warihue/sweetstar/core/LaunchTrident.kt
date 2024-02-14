@@ -1,4 +1,4 @@
-package com.warihue.abilities.core
+package com.warihue.sweetstar.core
 
 import net.kyori.adventure.text.Component
 import org.bukkit.Material

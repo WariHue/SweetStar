@@ -1,13 +1,13 @@
-package com.warihue.abilities
+package com.warihue.sweetstar
 
-import com.warihue.abilities.EventManager.registerEvents
-import com.warihue.abilities.commands.RegisterCommand.registerCommands
-import com.warihue.abilities.core.PlayerManager
-import org.bukkit.Material
-import org.bukkit.enchantments.Enchantment
+import com.warihue.sweetstar.EventManager.registerEvents
+import com.warihue.sweetstar.commands.RegisterCommand.registerCommands
+import com.warihue.sweetstar.core.PlayerManager
+import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
-import io.github.monun.tap.loader.LibraryLoader
+import org.bukkit.World
+import org.bukkit.WorldCreator
 
 class Main: JavaPlugin() {
 
@@ -31,5 +31,11 @@ class Main: JavaPlugin() {
         registerEvents()
         registerCommands()
         datafolder = dataFolder
+        val wcOB = WorldCreator("team_OB")
+        wcOB.environment(World.Environment.NETHER)
+        wcOB.createWorld()
+        val wcYB = WorldCreator("team_YB")
+        wcYB.environment(World.Environment.NETHER)
+        wcYB.createWorld()
     }
 }

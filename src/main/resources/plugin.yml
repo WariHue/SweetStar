@@ -1,6 +1,6 @@
 name: '${pluginName}'
 version: '${version}'
-main: '${group}.${packageName}.Main'
+main: '${group}.sweetstar.Main'
 api-version: '${paperVersion}'
 commands:
 libraries:

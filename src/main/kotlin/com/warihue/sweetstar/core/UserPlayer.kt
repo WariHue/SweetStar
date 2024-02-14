@@ -1,14 +1,15 @@
-package com.warihue.abilities.core
+package com.warihue.sweetstar.core
 
 import java.util.UUID
 
 
-enum class Ability {
+enum class Team {
     NONE,
-    AQUAMAN
+    OB,
+    YB
 }
 data class UserPlayer(
     val uuid: UUID,
     var name: String,
-    var ability: Ability
+    var team: Team
 )

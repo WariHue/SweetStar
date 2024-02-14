@@ -1,7 +1,8 @@
-package com.warihue.abilities
+package com.warihue.sweetstar
 
-import com.warihue.abilities.events.PlayerEvents
-import com.warihue.abilities.events.RiptideEvent
+import com.warihue.sweetstar.events.BossEvents
+import com.warihue.sweetstar.events.PlayerEvents
+import com.warihue.sweetstar.events.RiptideEvent
 
 object EventManager {
     fun registerEvents(){
@@ -9,6 +10,7 @@ object EventManager {
             it.server.pluginManager.run {
                 registerEvents(RiptideEvent, it)
                 registerEvents(PlayerEvents, it)
+                registerEvents(BossEvents, it)
             }
         }
     }
