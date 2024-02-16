@@ -6,6 +6,7 @@ import com.warihue.sweetstar.core.Team
 import com.warihue.sweetstar.core.item.Enhancement.checkEnhanceLevel
 import com.warihue.sweetstar.core.item.Enhancement.isSword
 import com.warihue.sweetstar.core.item.OpenGUI.openAnvilTable
+import com.warihue.sweetstar.core.item.OpenGUI.openEnchantTable
 import org.bukkit.*
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
@@ -73,6 +74,10 @@ object PlayerEvents: Listener {
         if(e.inventory.type == InventoryType.ANVIL){
             val player = e.player as Player
             openAnvilTable(player)
+            e.isCancelled = true
+        }else if(e.inventory.type == InventoryType.ENCHANTING){
+            val player = e.player as Player
+            openEnchantTable(player)
             e.isCancelled = true
         }
     }

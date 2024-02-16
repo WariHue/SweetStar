@@ -3,6 +3,7 @@
 package com.warihue.sweetstar.core.item
 
 
+import com.warihue.sweetstar.core.item.Enchantment.enchantItem
 import com.warihue.sweetstar.core.item.OpenGUI.openAnvilTable
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.Component.text

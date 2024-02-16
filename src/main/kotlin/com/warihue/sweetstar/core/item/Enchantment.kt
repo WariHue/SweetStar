@@ -4,7 +4,9 @@ import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.format.TextDecoration
 import org.bukkit.Material
+import org.bukkit.Sound
 import org.bukkit.enchantments.Enchantment
+import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import kotlin.random.Random
 
@@ -19,19 +21,24 @@ object Enchantment {
         ))
     }
 
-    fun enchantItem(itemStack: ItemStack){
-        val enchantment: HashMap<Enchantment, Int> = HashMap<Enchantment, Int>()
+    fun enchantItem(itemStack: ItemStack, p:Player): ItemStack{
         var lineLevel: Int = itemStack.enchantments.size
-        if(Random.nextFloat() > 0.95) lineLevel++
+        if(lineLevel == 0) lineLevel = Random.nextInt(1, 3)
+        if(Random.nextFloat() > 0.98 && lineLevel < 7) lineLevel++
         for (i in 0 until Enchantment.values().size){
             itemStack.removeEnchantment(Enchantment.values()[i])
         }
-        for (i in 0 until  lineLevel){
+        var i = 0
+        val enchantments: HashMap<Enchantment, Int> = HashMap()
+        RUN@while(i < lineLevel){
             val randEnchant: Enchantment = Enchantment.values()[Random.nextInt(Enchantment.values().size)]
-            if(enchantment[randEnchant] == null) return
             val randLevel: Int = Random.nextInt(randEnchant.maxLevel) + 1
-            itemStack.addEnchantment(randEnchant, randLevel)
-            enchantment[randEnchant] = randLevel
+            if(enchantments[randEnchant] != null) continue@RUN
+            itemStack.addUnsafeEnchantment(randEnchant, randLevel)
+            enchantments[randEnchant] = randLevel
+            i++
         }
+        p.location.world.playSound(p.location, Sound.BLOCK_ENCHANTMENT_TABLE_USE, 1f, 1f)
+        return itemStack
     }
 }
