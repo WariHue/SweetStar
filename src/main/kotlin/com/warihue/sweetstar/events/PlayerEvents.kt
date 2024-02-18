@@ -7,16 +7,20 @@ import com.warihue.sweetstar.core.item.Enhancement.checkEnhanceLevel
 import com.warihue.sweetstar.core.item.Enhancement.isSword
 import com.warihue.sweetstar.core.item.OpenGUI.openAnvilTable
 import com.warihue.sweetstar.core.item.OpenGUI.openEnchantTable
+import net.minecraft.world.level.block.BeaconBlock
 import org.bukkit.*
+import org.bukkit.block.Beacon
 import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.event.block.BlockPlaceEvent
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.inventory.InventoryOpenEvent
 import org.bukkit.event.inventory.InventoryType
 import org.bukkit.event.player.*
+import org.bukkit.inventory.Inventory
 import java.util.*
 
 
@@ -33,7 +37,8 @@ object PlayerEvents: Listener {
 
     @EventHandler
     fun onDie(e: PlayerDeathEvent){
-        var date = Date()
+        val date = Date()
+        e.player.inventory.clear()
         e.player.banPlayer("당신은 죽었습니다!", Date(date.time + 1800000), "death",true)
     }
 

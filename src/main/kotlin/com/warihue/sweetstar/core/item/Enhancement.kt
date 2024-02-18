@@ -24,14 +24,6 @@ import kotlin.random.Random
 
 object Enhancement {
 
-    val forceStoneItem: ItemStack = ItemStack(Material.PAPER).apply {
-        this.itemMeta.displayName(text("스타-포스 주문서").color(NamedTextColor.GOLD).decoration(TextDecoration.BOLD, true).decoration(TextDecoration.ITALIC, false))
-        this.itemMeta.setCustomModelData(2134567)
-        this.itemMeta.lore(listOf<Component>(
-            text("강화 주문서")
-        ))
-    }
-
     private fun Int.toStarString() = when(this){
         0 -> "☆☆☆☆☆☆☆☆☆☆"
         1 -> "★☆☆☆☆☆☆☆☆☆"
@@ -189,7 +181,6 @@ object Enhancement {
             player.closeInventory()
             openAnvilTable(player)
         }
-        player.sendMessage(text(rand))
         enhanceModifier(material ,item , force)
         return item
     }

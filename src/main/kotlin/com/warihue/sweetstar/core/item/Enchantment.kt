@@ -8,18 +8,11 @@ import org.bukkit.Sound
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.meta.ItemMeta
 import kotlin.random.Random
 
 object Enchantment {
-    val randStoneItem: ItemStack = ItemStack(Material.PAPER).apply {
-        this.itemMeta.displayName(
-            Component.text("마법 부여 주문서").color(NamedTextColor.GOLD).decoration(TextDecoration.BOLD, true).decoration(
-                TextDecoration.ITALIC, false))
-        this.itemMeta.setCustomModelData(2134568)
-        this.itemMeta.lore(listOf<Component>(
-            Component.text("마법 부여 주문서")
-        ))
-    }
+
 
     fun enchantItem(itemStack: ItemStack, p:Player): ItemStack{
         var lineLevel: Int = itemStack.enchantments.size
